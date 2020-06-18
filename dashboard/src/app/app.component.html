@@ -3,8 +3,7 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="sidemenu-list">
-          <ion-list-header>Radar Coronavírus Irará</ion-list-header>
-          <ion-note>build version</ion-note>
+          <ion-list-header><img class="ion-padding-end ion-padding-bottom" alt="Radar Coronavírus Irará" src="../../assets/logos/coronavirus-irara-logo.svg"></ion-list-header>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">

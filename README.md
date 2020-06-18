@@ -1,4 +1,4 @@
-# COVID-19 Municipal
+# ![COVID-19 Municipal](dashboard/src/assets/logos/covid19-municipal.svg)
 
 Este projeto é uma plataforma para acompanhamento do novo Coronavírus (COVID-19) na cidade de Irará/BA, bem como ferramentas para extrair e disponibilizar os dados utilizados.
 
