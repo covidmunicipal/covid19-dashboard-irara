@@ -37,11 +37,15 @@
 }
 
 .font-tabular-number {
-    font-variant-numeric: tabular-nums;
+    font-variant: tabular-nums;
 }
 
 .font-large {
-    font-size: 2em;
+    font-size: 2.5em;
+}
+
+.font-medium {
+    font-size: 1.5em;
 }
 
 .font-uppercase-title {
@@ -49,6 +53,51 @@
     font-size: 1em;
 }
 
-.no-margin {
-    margin: 0px;
+.font-uppercase-small {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+a {
+    text-decoration: none;
+    background-color: rgb(var(--ion-color-primary-rgb), 0.075);
+    transition-property: all;
+    transition-duration: .2s;
+    transition-timing-function: ease;
+}
+
+a:hover {
+    background-color: rgb(var(--ion-color-primary-rgb), 0.15)
+}
+  
+
+ul.button-set {
+    list-style-type: none;
+    padding: 0
+}
+
+.md .toolbar-logo {
+    height: 2.5em;
+    padding-top: 0.6em;
+    padding-bottom: 0.4em;
+}
+
+.no-left-padding {
+    padding-left: 0px;
+}
+
+.ios .toolbar-logo {
+    height: 1.6em;
+    padding-top: 0.2em
+}
+
+.vertical-spacer {
+    height: 1.25em;
+}
+
+h1, h2, h3, h4, h5, p {
+    ion-icon {
+      vertical-align: middle;
+      padding-bottom: 3px;
+    }
 }

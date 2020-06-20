@@ -1,0 +1,17 @@
+.colored-box {
+    border-radius: 1em;
+    padding: 1em;
+
+    &.danger-box {
+        background-color: rgb(var(--ion-color-danger-rgb), 0.1);
+    } 
+    &.primary-box {
+        background-color: rgb(var(--ion-color-primary-rgb), 0.1);
+    } 
+    &.success-box {
+        background-color: rgb(var(--ion-color-success-rgb), 0.1);
+    } 
+    &.medium-box {
+        background-color: rgb(var(--ion-color-medium-rgb), 0.1);
+    } 
+}

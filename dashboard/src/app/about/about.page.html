@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-hide-lg-up">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -8,11 +8,50 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Sobre</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="vertical-spacer ion-hide-lg-down"></div>
 
+  <ion-toolbar class="ion-hide-lg-down">
+    <ion-title class="ion-padding-horizontal"><h1>Sobre</h1></ion-title>
+  </ion-toolbar>
 
+  <div class="ion-padding">
+    <img class="ion-padding-top" src="../../assets/logos/covid19-municipal.svg">
+    <p>O Radar Coronavírus Irará é parte do projeto de código aberto <strong>Covid19 Municipal</strong>, mantido com muito carinho por <a href="https://github.com/erick2280">Erick Almeida</a>, <a href="https://github.com/di3goCS">Diego Silva</a> e <a href="https://github.com/Erick2280/covid19-municipal/graphs/contributors">contribuidores</a>.</p>
+    
+    <ul class="button-set ion-no-margin ion-padding-top">
+      <li>
+      <ion-button href="https://github.com/Erick2280/covid19-municipal" class="font-bold" shape="round" fill="outline" color="dark">
+        <ion-icon slot="start" name="logo-github"></ion-icon>
+        Contribua no GitHub
+      </ion-button>
+      </li>
+      <li>
+      <ion-button href="https://github.com/Erick2280/covid19-municipal" class="font-bold" shape="round" fill="outline" color="success">
+        <ion-icon slot="start" name="server"></ion-icon>
+        Acesse o banco de dados
+      </ion-button>
+      </li>
+      <li>
+      <ion-button href="https://github.com/Erick2280/covid19-municipal" class="font-bold" shape="round" fill="outline" color="primary">
+        <ion-icon slot="start" name="chatbubble-ellipses"></ion-icon>
+        Envie um feedback
+      </ion-button>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="ion-padding">
+    <div *ngFor="let faqEntry of faqEntries">
+    <h2 class="font-bold font-alternative">
+      {{ faqEntry.question }}
+    </h2>
+    <p>{{ faqEntry.answer }}</p>
+    </div>
+  </div>
+
+  <div class="ion-padding">
+    <p class="font-uppercase-small font-bold font-alternative" *ngIf="buildData.production">covid19-municipal-dashboard v{{ aboutData.buildVersion }}</p>
+    <p class="font-uppercase-small font-bold font-alternative" *ngIf="!buildData.production">covid19-municipal-dashboard running on debug mode</p>
+  </div>
 </ion-content>
