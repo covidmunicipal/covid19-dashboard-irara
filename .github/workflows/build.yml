@@ -16,11 +16,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-      working-directory: ./app
-      run: |
+      
+    - run: |
         npm install -g @angular/cli
         npm install -g @ionic/cli
         npm ci
         ionic build --prod
+      working-directory: ./dashboard
       env:
         CI: true

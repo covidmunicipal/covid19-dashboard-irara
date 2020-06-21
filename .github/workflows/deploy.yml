@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-      run: |
+    - run: |
         npm install -g @angular/cli
         npm install -g @ionic/cli
         npm ci
@@ -23,6 +23,7 @@ jobs:
         export GOOGLE_APPLICATION_CREDENTIALS="./secrets.json"
         echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
         firebase deploy -m ${{ github.ref }}
+      working-directory: ./dashboard
       env:
         CI: true
 
