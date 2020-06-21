@@ -12,4 +12,4 @@ O script será executado automaticamente toda vez que houver uma alteração na 
 
 ## Sobre
 
-O código fornecido é baseado no snippet de [Edwin Lee](https://gist.github.com/edwinlee) disponível [neste artigo do Medium](https://medium.com/firebase-developers/sheets-to-firebase-33132e31935b)).
+O código fornecido é baseado no snippet de [Edwin Lee](https://gist.github.com/edwinlee) disponível [neste artigo do Medium](https://medium.com/firebase-developers/sheets-to-firebase-33132e31935b).
