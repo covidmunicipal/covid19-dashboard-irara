@@ -1,0 +1,26 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+      working-directory: ./app
+      run: |
+        npm install -g @angular/cli
+        npm install -g @ionic/cli
+        npm ci
+        ionic build --prod
+      env:
+        CI: true
