@@ -80,9 +80,6 @@ function importSheet() {
  var data = sheet.getDataRange().getValues();
 
  var dataToImport = {};
-
-  // Adiciona a data da última atualização
- dataToImport.ultima_atualizacao = new Date();
  
  for (var i = 1; i < data.length; i++) {
    dataToImport[data[i][0]] = {};
@@ -97,4 +94,10 @@ function importSheet() {
    getEnvironment().firebaseUrl + sheet.getParent().getId() + "/" + name;
  var base = FirebaseApp.getDatabaseByUrl(firebaseUrl, token);
  base.setData("", dataToImport);
+ 
+  // Armazena a data da última atualização
+ var firebaseTimestampUrl =
+   getEnvironment().firebaseUrl + sheet.getParent().getId() + "/ultima_atualizacao";
+ FirebaseApp.getDatabaseByUrl(firebaseTimestampUrl, token).setData("", new Date());
+ 
 }
