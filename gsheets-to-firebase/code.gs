@@ -81,6 +81,9 @@ function importSheet() {
 
  var dataToImport = {};
 
+  // Adiciona a data da última atualização
+ dataToImport.ultima_atualizacao = new Date();
+ 
  for (var i = 1; i < data.length; i++) {
    dataToImport[data[i][0]] = {};
    for (var j = 0; j < data[0].length; j++) {
