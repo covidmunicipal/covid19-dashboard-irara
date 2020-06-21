@@ -34,6 +34,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: Autapp ${{ github.ref }}
+        release_name: Covid19 Municipal ${{ github.ref }}
         draft: false
         prerelease: false
