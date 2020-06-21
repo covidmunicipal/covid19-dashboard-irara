@@ -16,7 +16,7 @@ function getEnvironment() {
  return environment;
 }
 
-// Creates a Google Sheets on change trigger for the specific sheet
+// Cria um trigger por alteração na planilha
 function createSpreadsheetEditTrigger(sheetID) {
  var triggers = ScriptApp.getProjectTriggers();
  var triggerExists = false;
@@ -36,7 +36,7 @@ function createSpreadsheetEditTrigger(sheetID) {
  }
 }
 
-// Delete all the existing triggers for the project
+// Apaga todos os triggers da planilha
 function deleteTriggers() {
  var triggers = ScriptApp.getProjectTriggers();
  for (var i = 0; i < triggers.length; i++) {
@@ -44,12 +44,12 @@ function deleteTriggers() {
  }
 }
 
-// Initialize
+// Inicializa
 function initialize(e) {
  writeDataToFirebase(getEnvironment().spreadsheetID);
 }
 
-// Write the data to the Firebase URL
+// Escreve o dado na URL do Firebase informada
 function writeDataToFirebase(sheetID) {
  var ss = SpreadsheetApp.openById(sheetID);
  SpreadsheetApp.setActiveSpreadsheet(ss);
@@ -73,7 +73,7 @@ function assign(obj, keyPath, value) {
  obj[keyPath[lastKeyIndex]] = value;
 }
 
-// Import each sheet when there is a change
+// Importa cada planilha quando há uma alteração
 function importSheet() {
  var sheet = SpreadsheetApp.getActiveSheet();
  var name = sheet.getName();
