@@ -9,6 +9,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService,
+  CONFIG, APP_VERSION, COLLECTION_ENABLED } from '@angular/fire/analytics';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -18,12 +22,26 @@ import { environment } from '../environments/environment';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ScreenTrackingService,
+    UserTrackingService,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: CONFIG, useValue: {
+        allow_ad_personalization_signals: false
+      }
+    },
+    { provide: COLLECTION_ENABLED, useValue: environment.production},
+    // caso queira testar o Google Analytics em debug mode, comente a linha acima,
+    // descomente a linha abaixo e adicione DEBUG_MODE aos imports do AngularFireAuth.
+    // { provide: DEBUG_MODE, useValue: !environment.production},
+    { provide: APP_VERSION, useValue: environment.buildVersion}
   ],
   bootstrap: [AppComponent]
 })

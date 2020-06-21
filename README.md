@@ -1,5 +1,9 @@
 # ![COVID-19 Municipal](dashboard/src/assets/logos/covid19-municipal.svg)
 
+![Build status](https://img.shields.io/github/workflow/status/Erick2280/covid19-municipal/build)
+![Release version](https://img.shields.io/github/v/release/Erick2280/covid19-municipal)
+![Website status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fcovid.riso.dev)
+
 Este projeto é uma plataforma para acompanhamento do novo Coronavírus (COVID-19) na cidade de Irará/BA, bem como ferramentas para extrair e disponibilizar os dados utilizados.
 
 Sinta-se livre para contribuir com o projeto e adaptá-lo para outros propósitos! ❤

@@ -26,7 +26,11 @@ Dentro da pasta `dashboard/` do repositório, execute:
 
 Uma página abrirá no navegador padrão com o app.
 
-## Implantando uma nova versão
+## Google Analytics
+
+Este projeto tem integração com o [Google Analytics](https://analytics.google.com), e pode coletar certas informações como descrito [nessa página](https://support.google.com/analytics/answer/6318039). Caso deseje desativar essa integração, remova a importação do `AngularFireAnalyticsModule` e as referências relacionadas no arquivo `app.module.ts`.
+
+## [Contribuidores] Implantando uma nova versão
 
 Para implantar uma nova versão no Firebase, certifique-se de que o último commit satisfaz aos testes.
 

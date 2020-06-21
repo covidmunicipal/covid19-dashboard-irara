@@ -1,11 +1,5 @@
 {
-  "targets": {
-    "covid19-municipal": {
-      "hosting": {
-        "app": [
-          "covid19-municipal"
-        ]
-      }
-    }
+  "projects": {
+    "default": "covid19-municipal"
   }
 }
