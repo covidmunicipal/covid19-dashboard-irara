@@ -10,8 +10,8 @@
 
 function getEnvironment() {
  var environment = {
-   spreadsheetID: <"SPREADSHEETID">,
-   firebaseUrl: <"FIREBASEURL">
+   spreadsheetID: "<SPREADSHEET-ID>",
+   firebaseUrl: "<FIREBASEURL>"
  };
  return environment;
 }

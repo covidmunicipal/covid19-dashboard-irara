@@ -12,11 +12,13 @@ Sinta-se livre para contribuir com o projeto e adaptá-lo para outros propósito
 
 TO-DO
 
-## API (`/api`)
+## [Script de exportação do Google Sheets para Firebase (`/gsheets-to-firebase`)](gsheets-to-firebase)
 
-TO-DO
+É um script para o Google Apps Script que exporta os dados de uma planilha do Google Sheets para uma Realtime Database do Firebase. Utilizamos para publicar e disponibilizar para o aplicativo os dados coletados.
 
 ## Download de dados
+
+Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [seção Sobre da plataforma de acompanhamento](https://covid.riso.dev/about) e acesse a opção _Acessar banco de dados_. Os dados da Secretaria de Saúde da Bahia (SESAB) podem ser visualizados no [brasil.io](https://brasil.io/covid19/BA/).
 
 ## Sobre
 
