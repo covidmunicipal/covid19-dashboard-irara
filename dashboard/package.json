@@ -1,6 +1,6 @@
 {
   "name": "covid19-municipal-dashboard",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Erick Almeida",
   "homepage": "https://covid.riso.dev/",
   "scripts": {
