@@ -10,7 +10,7 @@ Instale o CLI do Ionic:
 
     npm install -g @ionic/cli
 
-Navegue para a pasta `dashboard/` do projeto.
+Navegue para a pasta `dashboard` do projeto.
 
     cd dashboard
 
@@ -20,7 +20,7 @@ Instale as dependências do projeto:
 
 ## Executando no navegador
 
-Dentro da pasta `dashboard/` do repositório, execute:
+Dentro da pasta `dashboard` do repositório, execute:
 
     ionic serve
 

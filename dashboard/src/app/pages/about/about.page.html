@@ -26,13 +26,13 @@
       </ion-button>
       </li>
       <li>
-      <ion-button href="https://github.com/Erick2280/covid19-municipal" class="font-bold" shape="round" fill="outline" color="success">
+      <ion-button [href]="databaseUrl" target="_blank" class="font-bold" shape="round" fill="outline" color="success">
         <ion-icon slot="start" name="server"></ion-icon>
         Acesse o banco de dados
       </ion-button>
       </li>
       <li>
-      <ion-button href="https://github.com/Erick2280/covid19-municipal" class="font-bold" shape="round" fill="outline" color="primary">
+      <ion-button href="mailto:eusou@erickalmeida.com.br" class="font-bold" shape="round" fill="outline" color="primary">
         <ion-icon slot="start" name="chatbubble-ellipses"></ion-icon>
         Envie um feedback
       </ion-button>
@@ -46,7 +46,7 @@
     <h2 class="font-bold font-alternative">
       {{ faqEntry.question }}
     </h2>
-    <p>{{ faqEntry.answer }}</p>
+    <p [innerHTML]="faqEntry.answer"></p>
     </div>
   </div>
 

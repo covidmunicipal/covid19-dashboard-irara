@@ -8,10 +8,20 @@
     &.primary-box {
         background-color: rgb(var(--ion-color-primary-rgb), 0.1);
     } 
+    &.secondary-box {
+        background-color: rgb(var(--ion-color-secondary-rgb), 0.1);
+    } 
+    &.tertiary-box {
+        background-color: rgb(var(--ion-color-tertiary-rgb), 0.1);
+    } 
     &.success-box {
         background-color: rgb(var(--ion-color-success-rgb), 0.1);
     } 
     &.medium-box {
         background-color: rgb(var(--ion-color-medium-rgb), 0.1);
     } 
+}
+
+.diff-container {
+    height: 1.35em;
 }

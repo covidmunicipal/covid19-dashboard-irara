@@ -14,7 +14,9 @@ export const environment = {
     messagingSenderId: '886717395582',
     appId: '1:886717395582:web:09f26fde75c6aa9b315e2f',
     measurementId: 'G-9S7453NBQZ'
-  }
+  },
+  spreadsheetId: '1-a543uhVSRItc7P4tZPiHBvz5bwUH0zQLn5b8hNbehg',
+  targetLocation: 'Irará'
 };
 
 /*

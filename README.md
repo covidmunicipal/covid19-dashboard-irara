@@ -22,10 +22,10 @@ TO-DO
 
 ## Download de dados
 
-Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [seção Sobre da plataforma de acompanhamento](https://covid.riso.dev/about) e selecione a opção _Acessar banco de dados_. Os dados da Secretaria de Saúde da Bahia (SESAB) podem ser visualizados no [brasil.io](https://brasil.io/covid19/BA/).
+Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [seção Sobre da plataforma de acompanhamento](https://covid.riso.dev/about) e selecione a opção _Acessar banco de dados_. Os dados da Secretaria de Saúde da Bahia (SESAB) podem ser visualizados no [Brasil.IO](https://brasil.io/covid19/BA/).
 
 ## Sobre
 
 Este projeto é mantido com muito carinho por [Erick Almeida](https://github.com/erick2280), [Diego Silva](https://github.com/di3goCS) e [contribuidores](https://github.com/Erick2280/covid19-municipal/graphs/contributors).
 
-O projeto foi inspirado no [covid19india](https://github.com/covid19india) e no [covid19japan](https://github.com/reustle/covid19japan). Além dos dados coletados pelo projeto, também utilizamos os dados disponibilizados pelo projeto [brasil.io](https://brasil.io/).
+O projeto foi inspirado no [covid19india](https://github.com/covid19india) e no [covid19japan](https://github.com/reustle/covid19japan). Além dos dados coletados pelo projeto, também utilizamos os dados disponibilizados pelo projeto [Brasil.IO](https://brasil.io/).
