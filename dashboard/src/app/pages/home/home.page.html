@@ -151,47 +151,47 @@
           <div class="vertical-spacer ion-hide-md-down"></div>
 
           <ion-row class="ion-align-items-center">
-            <ion-col size="2" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{rtdbData.lastTotalDayEntry.testes_realizados.total}}</p></ion-col>
-            <ion-col size="2" *ngIf="!rtdbData.lastTotalDayEntry">
+            <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{rtdbData.lastTotalDayEntry.testes_realizados.total}}</p></ion-col>
+            <ion-col size="3" *ngIf="!rtdbData.lastTotalDayEntry">
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated class="seven-tenths-width height-large"></ion-skeleton-text>
             </ion-col>
-            <ion-col size="10"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Testes rápidos realizados</span></p></ion-col>
+            <ion-col size="9"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Testes rápidos realizados</span></p></ion-col>
           </ion-row>
           <ion-row class="ion-align-items-center">
-            <ion-col size="2" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.testes_realizados.rapidos.negativos }}</p></ion-col>
-            <ion-col size="2" *ngIf="!rtdbData.lastTotalDayEntry">
+            <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.testes_realizados.rapidos.negativos }}</p></ion-col>
+            <ion-col size="3" *ngIf="!rtdbData.lastTotalDayEntry">
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated style="width: 70%; height: 1em"></ion-skeleton-text>
             </ion-col>
-            <ion-col size="10"><p class="ion-no-margin">Negativo por testes rápidos</p></ion-col>
+            <ion-col size="9"><p class="ion-no-margin">Negativo por testes rápidos</p></ion-col>
           </ion-row>
           <ion-row class="ion-align-items-center">
-            <ion-col size="2" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.testes_realizados.rapidos.positivos }}</p></ion-col>
-            <ion-col size="2" *ngIf="!rtdbData.lastTotalDayEntry">
+            <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.testes_realizados.rapidos.positivos }}</p></ion-col>
+            <ion-col size="3" *ngIf="!rtdbData.lastTotalDayEntry">
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated style="width: 70%; height: 1em"></ion-skeleton-text>
             </ion-col>
-            <ion-col size="10"><p class="ion-no-margin">Positivo por testes rápidos</p></ion-col>
+            <ion-col size="9"><p class="ion-no-margin">Positivo por testes rápidos</p></ion-col>
           </ion-row>
           <ion-row class="ion-align-items-center ion-margin-top">
-            <ion-col size="2" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_monitorados }}</p></ion-col>
-            <ion-col size="2" *ngIf="!rtdbData.lastTotalDayEntry">
+            <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_monitorados }}</p></ion-col>
+            <ion-col size="3" *ngIf="!rtdbData.lastTotalDayEntry">
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated class="seven-tenths-width height-large"></ion-skeleton-text>
             </ion-col>
-            <ion-col size="10"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos monitorados </span><ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="monitored-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p>
+            <ion-col size="9"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos monitorados </span><ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="monitored-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p>
             </ion-col>
           </ion-row>
           <ion-row class="ion-align-items-center ion-margin-top">
-            <ion-col size="2" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_suspeitos }}</p></ion-col>
-            <ion-col size="2" *ngIf="!rtdbData.lastTotalDayEntry">
+            <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_suspeitos }}</p></ion-col>
+            <ion-col size="3" *ngIf="!rtdbData.lastTotalDayEntry">
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated class="seven-tenths-width height-large"></ion-skeleton-text>
             </ion-col>
-            <ion-col size="10"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos suspeitos </span><ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="suspected-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p></ion-col>
+            <ion-col size="9"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos suspeitos </span><ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="suspected-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p></ion-col>
           </ion-row>
           <ion-row class="ion-align-items-center ion-margin-top">
-            <ion-col size="2" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_descartados }}</p></ion-col>
-            <ion-col size="2" *ngIf="!rtdbData.lastTotalDayEntry">
+            <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_descartados }}</p></ion-col>
+            <ion-col size="3" *ngIf="!rtdbData.lastTotalDayEntry">
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated class="seven-tenths-width height-large"></ion-skeleton-text>
             </ion-col>
-            <ion-col size="10"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos descartados </span><ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="discarded-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p></ion-col>
+            <ion-col size="9"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos descartados </span><ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="discarded-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p></ion-col>
           </ion-row>
         </ion-grid>
       </ion-col>
@@ -202,8 +202,8 @@
 
           <ng-container *ngIf="rtdbData.lastByLocationDayEntries">
           <ion-row *ngFor="let locationEntry of rtdbData.lastByLocationDayEntries" class="ion-align-items-center">
-            <ion-col size="2" class="no-left-padding"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ locationEntry.ativos.total }}</p></ion-col>
-            <ion-col size="10"><p class="ion-no-margin"> {{ locationEntry.localidade }} </p></ion-col>
+            <ion-col size="3" class="no-left-padding"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ locationEntry.ativos.total }}</p></ion-col>
+            <ion-col size="9"><p class="ion-no-margin"> {{ locationEntry.localidade }} </p></ion-col>
           </ion-row>
           </ng-container>
 
