@@ -29,7 +29,8 @@ export class RtdbDataService {
   percentageOfActiveCases: number;
   recoveryRate: number;
   mortalityRate: number;
-  averageGrowthRate: number;
+  averageGrowthRate: string;
+  averageGrowthRateBulletin: string;
   testsPerThousand: number;
 
   constructor(db: AngularFireDatabase) {
@@ -45,16 +46,21 @@ export class RtdbDataService {
       // Carrega a entrada mais nova
       this.lastTotalDayEntry = this.totalCasesArray[this.totalCasesArray.length - 1];
       this.humanReadableLastBulletin = format(new Date(this.lastTotalDayEntry.data), 'dd/MM/yyyy', {locale: ptBR});
-
-      // TO-DO: Taxa de crescimento média
+      const now = new Date();
 
       // Calcula os indicadores
       this.percentageOfActiveCases = Math.round(
         (this.lastTotalDayEntry.casos_ativos.total / this.lastTotalDayEntry.casos_confirmados.total) * 100);
       this.recoveryRate = Math.round((this.lastTotalDayEntry.casos_recuperados / this.lastTotalDayEntry.casos_confirmados.total) * 100);
+      this.mortalityRate = Math.round((this.lastTotalDayEntry.obitos / this.lastTotalDayEntry.casos_confirmados.total) * 100);
       this.testsPerThousand = Math.round(
         (this.lastTotalDayEntry.testes_realizados.total / this.additionalData[environment.targetLocation].populacao.quantidade) * 1000);
-      this.mortalityRate = Math.round((this.lastTotalDayEntry.obitos / this.lastTotalDayEntry.casos_confirmados.total) * 100);
+
+      // Calcula a taxa média de crescimento
+      const lastWeekBulletin = this.totalCasesArray[this.totalCasesArray.length - 8];
+      this.averageGrowthRateBulletin = format(new Date(lastWeekBulletin.data), 'dd/MM/yyyy', {locale: ptBR});
+      this.averageGrowthRate = ((((this.lastTotalDayEntry.casos_confirmados.total - lastWeekBulletin.casos_confirmados.total) /
+        lastWeekBulletin.casos_confirmados.total) * 100) / 7).toFixed(2);
 
       // Calcula diferenças em relação ao dia anterior
       if (this.totalCasesArray.length > 1) {
@@ -81,7 +87,7 @@ export class RtdbDataService {
 
       // Formata a data de última atualização em tempo relativo
       const date = new Date(spreadsheetData.ultima_atualizacao);
-      this.humanReadableLastUpdate = formatRelative(date, new Date(), {locale: ptBR});
+      this.humanReadableLastUpdate = formatRelative(date, now, {locale: ptBR});
 
     });
 

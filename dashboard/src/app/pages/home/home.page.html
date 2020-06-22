@@ -14,7 +14,7 @@
     <ion-row>
       <ion-col size-xs="12" size-md="6">
         <p class="font-bold ion-no-margin" *ngIf="rtdbData.lastTotalDayEntry">Atualizado por último {{ rtdbData.humanReadableLastUpdate }} </p>
-        <p class="ion-no-margin" *ngIf="rtdbData.lastTotalDayEntry">via Instagram da Prefeitura de Irará (<a href="https://instagr.am/prefeiturairara">@prefeiturairara</a>), último boletim às {{ rtdbData.humanReadableLastBulletin }}</p>
+        <p class="ion-no-margin" *ngIf="rtdbData.lastTotalDayEntry">via Instagram da Prefeitura de Irará (<a href="https://instagr.am/prefeiturairara">@prefeiturairara</a>), último boletim publicado em {{ rtdbData.humanReadableLastBulletin }}</p>
 
         <p class="font-bold ion-no-margin" *ngIf="!rtdbData.lastTotalDayEntry">Um momento...</p>
         <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated class="full-width height-normal"></ion-skeleton-text>
@@ -40,8 +40,8 @@
             <div *ngIf="rtdbData.lastTotalDayEntry" class="main-data-container">
               <p class="font-tabular-number font-large font-bold ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_confirmados.total }}</p>
               <p class="ion-no-margin font-tabular-number diff-container">
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados > 0" name="chevron-up"></ion-icon>
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados < 0" name="chevron-down"></ion-icon>
+                <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados > 0" name="chevron-up"></ion-icon>
+                <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados < 0" name="chevron-down"></ion-icon>
                 <span *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados != 0">{{ rtdbData.lastTotalDayEntry.diff_confirmados }}</span>
               </p>
             </div>
@@ -68,8 +68,8 @@
             <div *ngIf="rtdbData.lastTotalDayEntry" class="main-data-container">
               <p class="font-tabular-number font-large font-bold ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_ativos.total }}</p>
               <p class="ion-no-margin font-tabular-number diff-container">
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.diff_ativos > 0" name="chevron-up"></ion-icon>
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.diff_ativos < 0" name="chevron-down"></ion-icon>
+                <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.diff_ativos > 0" name="chevron-up"></ion-icon>
+                <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.diff_ativos < 0" name="chevron-down"></ion-icon>
                 <span *ngIf="rtdbData.lastTotalDayEntry.diff_ativos != 0">{{ rtdbData.lastTotalDayEntry.diff_ativos }}</span>
               </p>
             </div>
@@ -96,8 +96,8 @@
             <div *ngIf="rtdbData.lastTotalDayEntry" class="main-data-container">
               <p class="font-tabular-number font-large font-bold ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_recuperados }}</p>
               <p class="ion-no-margin font-tabular-number diff-container">
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados > 0" name="chevron-up"></ion-icon>
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados < 0" name="chevron-down"></ion-icon>
+                <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados > 0" name="chevron-up"></ion-icon>
+                <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados < 0" name="chevron-down"></ion-icon>
                 <span *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados != 0">{{ rtdbData.lastTotalDayEntry.diff_recuperados }}</span>
               </p>
             </div>
@@ -123,8 +123,8 @@
             <div *ngIf="rtdbData.lastTotalDayEntry" class="main-data-container">
               <p class="font-tabular-number font-large font-bold ion-no-margin">{{ rtdbData.lastTotalDayEntry.obitos }}</p>
               <p class="ion-no-margin font-tabular-number diff-container">
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.obitos > 0" name="chevron-up"></ion-icon>
-                <ion-icon *ngIf="rtdbData.lastTotalDayEntry.obitos < 0" name="chevron-down"></ion-icon>
+                <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.obitos > 0" name="chevron-up"></ion-icon>
+                <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.obitos < 0" name="chevron-down"></ion-icon>
                 <span *ngIf="rtdbData.lastTotalDayEntry.obitos != 0">{{ rtdbData.lastTotalDayEntry.obitos }}</span>
               </p>
             </div>
@@ -215,7 +215,7 @@
         <ion-grid>
   
           <ion-text color="primary"><h1 class="font-bold font-alternative">Evolução</h1></ion-text>
-
+          <p>Em breve, terão gráficos de evolução por aqui.</p>
         </ion-grid>
       </ion-col>
       <ion-col size-xs="12" size-md="6">
@@ -237,7 +237,10 @@
           </ion-row>
 
           <div class="colored-box primary-box ion-margin-vertical">
-            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Porcentagem de casos ativos</h1>
+            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Porcentagem de casos ativos
+              <ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="insight-active-cases-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon>
+            </h1>
+
             <div>
               <ion-grid class="ion-no-padding">
                 <ion-row class="ion-align-items-center">
@@ -260,7 +263,9 @@
           </div>
 
           <div class="colored-box success-box ion-margin-vertical">
-            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Taxa de recuperação</h1>
+            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Taxa de recuperação
+              <ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="insight-recovery-rate-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon>
+            </h1>
             <div>
               <ion-grid class="ion-no-padding">
                 <ion-row class="ion-align-items-center">
@@ -283,7 +288,9 @@
           </div>
 
           <div class="colored-box medium-box ion-margin-vertical">
-            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Taxa de mortalidade</h1>
+            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Taxa de mortalidade
+              <ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="insight-mortality-rate-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon>
+            </h1>
             <div>
               <ion-grid class="ion-no-padding">
                 <ion-row class="ion-align-items-center">
@@ -304,19 +311,21 @@
           </div>
 
           <div class="colored-box danger-box ion-margin-vertical">
-            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Média de crescimento</h1>
+            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Média de crescimento
+              <ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="insight-growth-rate-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon>
+            </h1>
             <div>
               <ion-grid class="ion-no-padding">
                 <ion-row class="ion-align-items-center">
                   <ion-col size-xs="4">
                     <ion-text color="danger">
-                      <p *ngIf="rtdbData.averageGrowthRate" class="ion-no-margin font-bold font-medium">{{ rtdbData.averageGrowthRate }}</p>
+                      <p *ngIf="rtdbData.averageGrowthRate" class="ion-no-margin font-bold font-medium">{{ rtdbData.averageGrowthRate }}%</p>
                       <ion-skeleton-text *ngIf="!rtdbData.averageGrowthRate" animated class="seven-tenths-width height-large"></ion-skeleton-text>  
                     </ion-text>
                   </ion-col>
             
                   <ion-col size-xs="8" class="ion-text-right">
-                    <p *ngIf="rtdbData.averageGrowthRate" class="ion-margin-vertical">Na última semana, o número de novas infecções cresceu em {{ rtdbData.averageGrowthRate }}% a cada dia.</p>
+                    <p *ngIf="rtdbData.averageGrowthRate" class="ion-margin-vertical">Na última semana, o número de novas infecções cresceu em média {{ rtdbData.averageGrowthRate }}% a cada dia.</p>
                     <ion-skeleton-text *ngIf="!rtdbData.averageGrowthRate" animated class="full-width height-normal"></ion-skeleton-text>
                     <ion-skeleton-text *ngIf="!rtdbData.averageGrowthRate" animated class="full-width height-normal"></ion-skeleton-text>
                   </ion-col>
@@ -327,7 +336,9 @@
           </div>
 
           <div class="colored-box tertiary-box ion-margin-vertical">
-            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Testes por mil</h1>
+            <h1 class="font-alternative font-bold font-uppercase-title ion-no-margin">Testes por mil
+              <ion-icon *ngIf="rtdbData.lastTotalDayEntry" tabindex="0" class="tooltip-icon" id="insight-tests-thousand-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon>
+            </h1>
             <div>
               <ion-grid class="ion-no-padding">
                 <ion-row class="ion-align-items-center">

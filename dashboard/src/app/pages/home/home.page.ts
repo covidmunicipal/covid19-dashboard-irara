@@ -64,8 +64,25 @@ export class HomePage implements OnInit {
         content: `Um caso é considerado descartado quando o paciente foi considerado suspeito, mas houve resultado negativo para o novo Coronavírus ou existe confirmação laboratorial para outro agente causador dos sintomas.`
       });
 
-      tippy('#population-source-tooltip', {
-        content: `Este dado é ${this.rtdbData.additionalData[this.targetLocation].populacao.fonte}.`
+      tippy('#insight-active-cases-tooltip', {
+        content: `A fórmula utilizada é (totalDeCasosAtivos / totalDeCasosConfirmados) * 100.`
+      });
+
+      tippy('#insight-recovery-rate-tooltip', {
+        content: `A fórmula utilizada é (totalDeCasosRecuperados / totalDeCasosConfirmados) * 100.`
+      });
+
+      tippy('#insight-mortality-rate-tooltip', {
+        content: `A fórmula utilizada é (totalDeObitos / totalDeCasosConfirmados) * 100.`
+      });
+
+      tippy('#insight-growth-rate-tooltip', {
+        content: `Compreende o período entre ${this.rtdbData.averageGrowthRateBulletin} e ${this.rtdbData.humanReadableLastBulletin}.
+         A fórmula utilizada é (((totalDeCasosConfirmadosUltimoBoletim - totalDeCasosConfirmadosBoletimAnterior) / totalDeCasosConfirmadosBoletimAnterior) * 100) / 7.`
+      });
+
+      tippy('#insight-tests-thousand-tooltip', {
+        content: `A fórmula utilizada é (totalDeTestesRápidosRealizados / populacaoDaCidade) * 1000.`
       });
 
     });
