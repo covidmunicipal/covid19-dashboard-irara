@@ -70,7 +70,7 @@ export class RtdbDataService {
         this.lastTotalDayEntry.diff_confirmados =
           this.lastTotalDayEntry.casos_confirmados.total - penultimateTotalDayEntry.casos_confirmados.total;
         this.lastTotalDayEntry.diff_recuperados = this.lastTotalDayEntry.casos_recuperados - penultimateTotalDayEntry.casos_recuperados;
-        this.lastTotalDayEntry.diff_obitos = this.lastTotalDayEntry.casos_obitos - penultimateTotalDayEntry.casos_obitos;
+        this.lastTotalDayEntry.diff_obitos = this.lastTotalDayEntry.obitos - penultimateTotalDayEntry.obitos;
 
       } else {
         this.lastTotalDayEntry.diff_ativos = 0;
