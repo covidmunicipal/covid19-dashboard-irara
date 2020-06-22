@@ -92,7 +92,7 @@ export class HomePage implements OnInit {
 
     tippy('#insight-growth-rate-tooltip', {
       content: `Compreende o período entre ${this.rtdbData.averageGrowthRateBulletin} e ${this.rtdbData.humanReadableLastBulletin}.
-       A fórmula utilizada é (((totalDeCasosConfirmadosUltimoBoletim - totalDeCasosConfirmadosBoletimAnterior) / totalDeCasosConfirmadosBoletimAnterior) * 100) / 7.`
+       A fórmula utilizada é (((totalDeCasosConfirmadosUltimoBoletim - totalDeCasosConfirmadosBoletimAnterior) / totalDeCasosConfirmadosBoletimAnterior) * 100) / diferençaDeDias.`
     });
 
     tippy('#insight-tests-thousand-tooltip', {

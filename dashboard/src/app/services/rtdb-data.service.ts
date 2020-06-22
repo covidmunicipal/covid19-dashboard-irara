@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { format, formatRelative } from 'date-fns';
+import { format, formatRelative, differenceInCalendarDays } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 import { environment } from '../../environments/environment';
@@ -58,9 +58,10 @@ export class RtdbDataService {
 
       // Calcula a taxa média de crescimento
       const lastWeekBulletin = this.totalCasesArray[this.totalCasesArray.length - 8];
+      const diffBetweenDates = differenceInCalendarDays(new Date(this.lastTotalDayEntry.data), new Date(lastWeekBulletin.data));
       this.averageGrowthRateBulletin = format(new Date(lastWeekBulletin.data), 'dd/MM/yyyy', {locale: ptBR});
       this.averageGrowthRate = ((((this.lastTotalDayEntry.casos_confirmados.total - lastWeekBulletin.casos_confirmados.total) /
-        lastWeekBulletin.casos_confirmados.total) * 100) / 7).toFixed(2);
+        lastWeekBulletin.casos_confirmados.total) * 100) / diffBetweenDates).toFixed(2);
 
       // Calcula diferenças em relação ao dia anterior
       if (this.totalCasesArray.length > 1) {
