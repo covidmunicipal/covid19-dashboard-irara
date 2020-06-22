@@ -64,6 +64,10 @@ export class HomePage implements OnInit {
         content: `Um caso é considerado descartado quando o paciente foi considerado suspeito, mas houve resultado negativo para o novo Coronavírus ou existe confirmação laboratorial para outro agente causador dos sintomas.`
       });
 
+      tippy('#population-source-tooltip', {
+        content: `Este dado é ${this.rtdbData.additionalData[this.targetLocation].populacao.fonte}.`
+      });
+
       tippy('#insight-active-cases-tooltip', {
         content: `A fórmula utilizada é (totalDeCasosAtivos / totalDeCasosConfirmados) * 100.`
       });
