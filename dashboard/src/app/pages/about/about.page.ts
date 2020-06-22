@@ -20,11 +20,11 @@ export class AboutPage implements OnInit {
     },
     {
       question: 'Por que existem diferenças entre os valores do site com relação à de outras fontes?',
-      answer: 'Podemos contabilizar os casos de forma diferente. Em alguns locais, oferecemos informações adicionais sobre os métodos ao pressionar o botão de informações. Além disso, as fontes que usamos podem estar mais ou menos atualizadas que outras.'
+      answer: 'Podemos contabilizar os casos de forma diferente. Em alguns locais, oferecemos informações adicionais sobre a contabilização no botão de informações. Além disso, as fontes que usamos podem estar mais ou menos atualizadas que outras.'
     },
     {
       question: 'Por que as porcentagens não somam 100%?',
-      answer: 'A plataforma realiza arredondamentos para o inteiro mais próximo nos valores calculados, por isso, nem sempre a soma das porcentagens totaliza 100%.'
+      answer: 'A plataforma realiza arredondamentos para o inteiro mais próximo nos valores calculados. Por isso, nem sempre a soma das porcentagens totaliza 100%.'
     },
     {
       question: 'Quem são vocês?',
