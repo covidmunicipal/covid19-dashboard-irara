@@ -28,6 +28,9 @@
 /* C3 library CSS */
 @import "~c3/c3.min.css";
 
+/* Microtip CSS library */
+@import 'tippy.js/dist/tippy.css';
+
 .font-alternative {
     font-family: 'DM Sans', 'Inter', sans-serif;
 }
@@ -124,4 +127,8 @@ h1, h2, h3, h4, h5, p {
 
 .height-normal {
     height: 1em;
+}
+
+.tippy-box a {
+    color: #a2b5ec;
 }

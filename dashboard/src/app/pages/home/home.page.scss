@@ -25,3 +25,17 @@
 .diff-container {
     height: 1.35em;
 }
+
+.box-tooltip {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    
+    ion-icon {
+        font-size: 1.5em;
+    }
+}
+
+.tooltip-icon {
+    font-size: 1.5em; 
+}
