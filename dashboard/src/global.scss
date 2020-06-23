@@ -31,6 +31,8 @@
 /* Microtip CSS library */
 @import 'tippy.js/dist/tippy.css';
 
+/* Fonte */
+
 .font-alternative {
     font-family: 'DM Sans', 'Inter', sans-serif;
 }
@@ -61,6 +63,8 @@
     font-size: 0.8em;
 }
 
+/* Links */
+
 a {
     text-decoration: none;
     background-color: rgb(var(--ion-color-primary-rgb), 0.075);
@@ -79,19 +83,23 @@ ul.button-set {
     padding: 0
 }
 
+/* Toolbar */
+
 .md .toolbar-logo {
     height: 2.5em;
     padding-top: 0.6em;
     padding-bottom: 0.4em;
 }
 
-.no-left-padding {
-    padding-left: 0px;
-}
-
 .ios .toolbar-logo {
     height: 1.6em;
     padding-top: 0.2em
+}
+
+/* Elementos diversos */
+
+.no-left-padding {
+    padding-left: 0px;
 }
 
 .vertical-spacer {
@@ -129,8 +137,29 @@ h1, h2, h3, h4, h5, p {
     height: 1em;
 }
 
+/* Tooltips */
+
 .tippy-box a {
     color: #a2b5ec;
+}
+
+.box-tooltip {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    
+    ion-icon {
+        font-size: 1.5em;
+    }
+}
+
+.tooltip-icon {
+    font-size: 1.5em; 
+}
+
+.evolution-chart {
+    margin-left: -1em;
+    margin-right: 1em;
 }
 
 /* C3 Charts */
