@@ -8,6 +8,8 @@ Este projeto é uma plataforma para acompanhamento do novo Coronavírus (COVID-1
 
 Sinta-se livre para contribuir com o projeto e adaptá-lo para outros propósitos! ❤
 
+![Captura de tela da plataforma de acompanhamento](assets/dashboard_screenshot.png)
+
 ## [Plataforma de acompanhamento (`/dashboard`)](dashboard)
 
 É um aplicativo web progressivo (PWA) em Angular para visualização dos dados.
