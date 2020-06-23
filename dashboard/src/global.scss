@@ -132,3 +132,27 @@ h1, h2, h3, h4, h5, p {
 .tippy-box a {
     color: #a2b5ec;
 }
+
+/* C3 Charts */
+
+.glance-chart {
+    height: 2em;
+    margin-top: 0.5em;
+
+    .c3-chart {
+        clip-path: none;
+    }
+}
+
+.c3-line {
+    stroke-width: 2px;
+}
+
+.c3-legend-item, .c3-axis-x text, .c3-axis-y text {
+    font-family: var(--ion-font-family);
+    font-size: 12px;
+}
+
+.c3-tooltip-container .c3-tooltip th {
+    background-color: var(--ion-color-dark);
+}

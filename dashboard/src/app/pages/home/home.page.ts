@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { RtdbDataService } from '../../services/rtdb-data.service';
 
 import tippy from 'tippy.js';
+import * as c3 from 'c3';
 
 import { environment } from '../../../environments/environment';
+import { BrasilIoDataService } from '../../services/brasilio-data.service';
 
 @Component({
   selector: 'app-home',
@@ -14,19 +16,21 @@ export class HomePage implements OnInit {
 
   targetLocation = environment.targetLocation;
 
-  constructor(public rtdbData: RtdbDataService) {
-
-  }
+  constructor(public rtdbData: RtdbDataService, public brasilIoData: BrasilIoDataService) {}
 
   ngOnInit() {
     this.rtdbData.spreadsheet.subscribe(() => {
       this.updateTooltips();
+      this.updateGlanceCharts();
+      this.updateEvolutionCharts();
     });
   }
 
   ionViewDidEnter() {
     if (this.rtdbData.lastTotalDayEntry) {
       this.updateTooltips();
+      this.updateGlanceCharts();
+      this.updateEvolutionCharts();
     }
   }
 
@@ -58,6 +62,10 @@ export class HomePage implements OnInit {
     tippy('#deceased-tooltip', {
       content: `Apenas são considerados óbitos pelo novo Coronavírus quando a pessoa tem resultado positivo atestado pelo LACEN ou teste sorológico.`,
       allowHTML: true
+    });
+
+    tippy('#notified-tooltip', {
+      content: `É o número de casos confirmados em ${environment.targetLocation} segundo a Secretaria de Saúde do Estado da Bahia, e não engloba testes rápidos. Este dado é fornecido pelo Brasil.IO.`
     });
 
     tippy('#monitored-tooltip', {
@@ -97,6 +105,163 @@ export class HomePage implements OnInit {
 
     tippy('#insight-tests-thousand-tooltip', {
       content: `A fórmula utilizada é (totalDeTestesRápidosRealizados / populacaoDaCidade) * 1000.`
+    });
+
+  }
+
+  updateGlanceCharts() {
+
+    const axis = {
+      x: {
+        show: false
+      },
+      y: {
+        show: false
+      }
+    };
+    const legend = {
+      show: false
+    };
+    const interaction = {
+      enabled: false
+    };
+
+    c3.generate({
+      bindto: '#confirmed-glance-chart',
+      data: {
+          columns: [
+              ['confirmed', ...this.rtdbData.confirmedSeries.slice(-7)]
+          ],
+          type: 'line'
+      },
+      color: {
+        pattern: ['#f03064']
+      },
+      axis,
+      legend,
+      interaction
+    });
+
+    c3.generate({
+      bindto: '#active-glance-chart',
+      data: {
+          columns: [
+              ['active', ...this.rtdbData.activeSeries.slice(-7)]
+          ],
+          type: 'line'
+      },
+      color: {
+        pattern: ['#305ff0']
+      },
+      axis,
+      legend,
+      interaction
+    });
+
+    c3.generate({
+      bindto: '#recovered-glance-chart',
+      data: {
+          columns: [
+              ['recovered', ...this.rtdbData.recoveredSeries.slice(-7)]
+          ],
+          type: 'line'
+      },
+      color: {
+        pattern: ['#29c065']
+      },
+      axis,
+      legend,
+      interaction
+    });
+
+    c3.generate({
+      bindto: '#deceased-glance-chart',
+      data: {
+          columns: [
+              ['deceased', ...this.rtdbData.deceasedSeries.slice(-7)]
+          ],
+          type: 'line'
+      },
+      color: {
+        pattern: ['#7f8cb6']
+      },
+      axis,
+      legend,
+      interaction
+    });
+
+  }
+
+  updateEvolutionCharts() {
+
+    c3.generate({
+      bindto: '#total-cases-chart',
+      data: {
+          x: 'x',
+          xFormat: '%d/%m/%Y',
+          columns: [
+              ['x', ...this.rtdbData.humanReadableDateSeries],
+              ['Confirmados', ...this.rtdbData.confirmedSeries],
+              ['Ativos', ...this.rtdbData.activeSeries],
+              ['Recuperados', ...this.rtdbData.recoveredSeries],
+              ['Óbitos', ...this.rtdbData.deceasedSeries],
+          ],
+          type: 'line'
+      },
+      color: {
+        pattern: ['#f03064', '#305ff0', '#29c065', '#7f8cb6']
+      },
+      zoom: {
+        enabled: true
+      },
+      axis: {
+        x: {
+          type: 'timeseries',
+          tick: {
+              format: '%d/%m/%Y',
+              values: [
+                '26/03/2020',
+                '26/04/2020',
+                '26/05/2020',
+                '26/06/2020',
+                '26/07/2020',
+                '26/08/2020',
+                '26/09/2020',
+                '26/10/2020',
+                '26/11/2020',
+                '26/12/2020'
+              ]
+          }
+        },
+        y: {
+          min: 0,
+          tick: {
+            values: [
+              0,
+              10,
+              20,
+              30,
+              40,
+              50,
+              60,
+              70,
+              80,
+              90,
+              100,
+              110,
+              120,
+              130,
+              140,
+              150,
+              160,
+              170,
+              180,
+              190,
+              200
+            ],
+          }
+      }
+    }
     });
 
   }

@@ -47,13 +47,13 @@
             </div>
 
             <div *ngIf="rtdbData.lastTotalDayEntry" class="box-tooltip" tabindex="0" id="confirmed-tooltip" aria-label="Mais informações"><ion-icon color="medium" name="information-circle"></ion-icon></div>
-
-            <div id="confirmed-glance-chart"></div>
-
+            
             <div *ngIf="!rtdbData.lastTotalDayEntry">
               <p class="font-tabular-number font-large font-bold ion-no-margin"><ion-spinner color="danger"></ion-spinner></p>
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" class="full-width diff-container" animated></ion-skeleton-text>
             </div>
+            
+            <div id="confirmed-glance-chart" class="glance-chart"></div>
 
           </ion-text>
 
@@ -76,12 +76,12 @@
 
             <div *ngIf="rtdbData.lastTotalDayEntry" class="box-tooltip" tabindex="0" id="active-tooltip" aria-label="Mais informações"><ion-icon color="medium" name="information-circle"></ion-icon></div>
 
-            <div id="active-glance-chart"></div>
-
             <div *ngIf="!rtdbData.lastTotalDayEntry">
               <p class="font-tabular-number font-large font-bold ion-no-margin"><ion-spinner color="primary"></ion-spinner></p>
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" class="full-width diff-container" animated></ion-skeleton-text>
             </div>
+
+            <div id="active-glance-chart" class="glance-chart"></div>
 
           </ion-text>
 
@@ -104,12 +104,12 @@
 
             <div *ngIf="rtdbData.lastTotalDayEntry" class="box-tooltip" tabindex="0" id="recovered-tooltip" aria-label="Mais informações"><ion-icon color="medium" name="information-circle"></ion-icon></div>
             
-            <div id="recovered-glance-chart"></div>
-
             <div *ngIf="!rtdbData.lastTotalDayEntry">
               <p class="font-tabular-number font-large font-bold ion-no-margin"><ion-spinner color="success"></ion-spinner></p>
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" class="full-width diff-container" animated></ion-skeleton-text>
             </div>
+            
+            <div id="recovered-glance-chart" class="glance-chart"></div>
 
           </ion-text>
 
@@ -130,13 +130,13 @@
             </div>
 
             <div *ngIf="rtdbData.lastTotalDayEntry" class="box-tooltip" tabindex="0" id="deceased-tooltip" aria-label="Mais informações"><ion-icon color="medium" name="information-circle"></ion-icon></div>
-
-            <div id="deceased-glance-chart"></div>
-
+            
             <div *ngIf="!rtdbData.lastTotalDayEntry">
               <p class="font-tabular-number font-large font-bold ion-no-margin"><ion-spinner color="medium"></ion-spinner></p>
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" class="full-width diff-container" animated></ion-skeleton-text>
             </div>
+            
+            <div id="deceased-glance-chart" class="glance-chart"></div>
 
           </ion-text>
         </div>
@@ -170,6 +170,14 @@
               <ion-skeleton-text *ngIf="!rtdbData.lastTotalDayEntry" animated style="width: 70%; height: 1em"></ion-skeleton-text>
             </ion-col>
             <ion-col size="9"><p class="ion-no-margin">Positivo por testes rápidos</p></ion-col>
+          </ion-row>
+          <ion-row class="ion-align-items-center ion-margin-top">
+            <ion-col size="3" *ngIf="brasilIoData.lastEntryResult"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ brasilIoData.lastEntryResult.last_available_confirmed }}</p></ion-col>
+            <ion-col size="3" *ngIf="!brasilIoData.lastEntryResult">
+              <ion-skeleton-text *ngIf="!brasilIoData.lastEntryResult" animated class="seven-tenths-width height-large"></ion-skeleton-text>
+            </ion-col>
+            <ion-col size="9"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos notificados à SESAB </span><ion-icon *ngIf="brasilIoData.lastEntryResult" tabindex="0" class="tooltip-icon" id="notified-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p>
+            </ion-col>
           </ion-row>
           <ion-row class="ion-align-items-center ion-margin-top">
             <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_monitorados }}</p></ion-col>
@@ -215,8 +223,10 @@
         <ion-grid>
   
           <ion-text color="primary"><h1 class="font-bold font-alternative">Evolução</h1></ion-text>
-          <p>Em breve, terão gráficos de evolução por aqui.</p>
+          <div id="total-cases-chart" class="evolution-chart"></div>
+
         </ion-grid>
+
       </ion-col>
       <ion-col size-xs="12" size-md="6">
         <ion-grid>

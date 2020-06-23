@@ -33,6 +33,13 @@ export class RtdbDataService {
   averageGrowthRateBulletin: string;
   testsPerThousand: number;
 
+  // Séries
+  confirmedSeries: [number];
+  activeSeries: [number];
+  recoveredSeries: [number];
+  deceasedSeries: [number];
+  humanReadableDateSeries: [string];
+
   constructor(db: AngularFireDatabase) {
 
     this.spreadsheet = db.object(`${environment.spreadsheetId}`).valueChanges();
@@ -43,10 +50,21 @@ export class RtdbDataService {
       this.byLocationArray = spreadsheetData.por_localidade;
       this.additionalData = spreadsheetData.dados_adicionais;
 
+      for (const entry of this.totalCasesArray) {
+        entry.data = new Date(entry.data);
+      }
+
       // Carrega a entrada mais nova
       this.lastTotalDayEntry = this.totalCasesArray[this.totalCasesArray.length - 1];
-      this.humanReadableLastBulletin = format(new Date(this.lastTotalDayEntry.data), 'dd/MM/yyyy', {locale: ptBR});
+      this.humanReadableLastBulletin = format(this.lastTotalDayEntry.data, 'dd/MM/yyyy', {locale: ptBR});
       const now = new Date();
+
+      // Carrega as séries para gráficos
+      this.confirmedSeries = this.totalCasesArray.map(entry => entry.casos_confirmados.total);
+      this.activeSeries = this.totalCasesArray.map(entry => entry.casos_ativos.total);
+      this.recoveredSeries = this.totalCasesArray.map(entry => entry.casos_recuperados);
+      this.deceasedSeries = this.totalCasesArray.map(entry => entry.obitos);
+      this.humanReadableDateSeries = this.totalCasesArray.map(entry => format(entry.data, 'dd/MM/yyyy', {locale: ptBR}));
 
       // Calcula os indicadores
       this.percentageOfActiveCases = Math.round(
@@ -58,8 +76,8 @@ export class RtdbDataService {
 
       // Calcula a taxa média de crescimento
       const lastWeekBulletin = this.totalCasesArray[this.totalCasesArray.length - 8];
-      const diffBetweenDates = differenceInCalendarDays(new Date(this.lastTotalDayEntry.data), new Date(lastWeekBulletin.data));
-      this.averageGrowthRateBulletin = format(new Date(lastWeekBulletin.data), 'dd/MM/yyyy', {locale: ptBR});
+      const diffBetweenDates = differenceInCalendarDays(this.lastTotalDayEntry.data, lastWeekBulletin.data);
+      this.averageGrowthRateBulletin = format(lastWeekBulletin.data, 'dd/MM/yyyy', {locale: ptBR});
       this.averageGrowthRate = ((((this.lastTotalDayEntry.casos_confirmados.total - lastWeekBulletin.casos_confirmados.total) /
         lastWeekBulletin.casos_confirmados.total) * 100) / diffBetweenDates).toFixed(2);
 
