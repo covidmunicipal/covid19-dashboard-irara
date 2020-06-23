@@ -42,7 +42,7 @@
               <p class="ion-no-margin font-tabular-number diff-container">
                 <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados > 0" name="chevron-up"></ion-icon>
                 <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados < 0" name="chevron-down"></ion-icon>
-                <span *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados != 0">{{ rtdbData.lastTotalDayEntry.diff_confirmados }}</span>
+                <span *ngIf="rtdbData.lastTotalDayEntry.diff_confirmados != 0">{{ rtdbData.lastTotalDayEntry.diff_confirmados | absoluteNumber }}</span>
               </p>
             </div>
 
@@ -70,7 +70,7 @@
               <p class="ion-no-margin font-tabular-number diff-container">
                 <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.diff_ativos > 0" name="chevron-up"></ion-icon>
                 <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.diff_ativos < 0" name="chevron-down"></ion-icon>
-                <span *ngIf="rtdbData.lastTotalDayEntry.diff_ativos != 0">{{ rtdbData.lastTotalDayEntry.diff_ativos }}</span>
+                <span *ngIf="rtdbData.lastTotalDayEntry.diff_ativos != 0">{{ rtdbData.lastTotalDayEntry.diff_ativos | absoluteNumber }}</span>
               </p>
             </div>
 
@@ -98,7 +98,7 @@
               <p class="ion-no-margin font-tabular-number diff-container">
                 <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados > 0" name="chevron-up"></ion-icon>
                 <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados < 0" name="chevron-down"></ion-icon>
-                <span *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados != 0">{{ rtdbData.lastTotalDayEntry.diff_recuperados }}</span>
+                <span *ngIf="rtdbData.lastTotalDayEntry.diff_recuperados != 0">{{ rtdbData.lastTotalDayEntry.diff_recuperados | absoluteNumber }}</span>
               </p>
             </div>
 
@@ -125,7 +125,7 @@
               <p class="ion-no-margin font-tabular-number diff-container">
                 <ion-icon aria-label="aumentou" *ngIf="rtdbData.lastTotalDayEntry.diff_obitos > 0" name="chevron-up"></ion-icon>
                 <ion-icon aria-label="reduziu" *ngIf="rtdbData.lastTotalDayEntry.diff_obitos < 0" name="chevron-down"></ion-icon>
-                <span *ngIf="rtdbData.lastTotalDayEntry.diff_obitos != 0">{{ rtdbData.lastTotalDayEntry.diff_obitos }}</span>
+                <span *ngIf="rtdbData.lastTotalDayEntry.diff_obitos != 0">{{ rtdbData.lastTotalDayEntry.diff_obitos | absoluteNumber }}</span>
               </p>
             </div>
 

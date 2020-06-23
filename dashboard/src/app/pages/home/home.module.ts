@@ -6,6 +6,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { AbsoluteNumberPipe } from '../../pipes/absolute-number.pipe';
+
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -15,6 +17,6 @@ import { HomePage } from './home.page';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, AbsoluteNumberPipe]
 })
 export class HomePageModule {}
