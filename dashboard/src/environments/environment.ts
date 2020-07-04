@@ -16,6 +16,7 @@ export const environment = {
     measurementId: 'G-9S7453NBQZ'
   },
   spreadsheetId: '1-a543uhVSRItc7P4tZPiHBvz5bwUH0zQLn5b8hNbehg',
+  appName: 'Radar Coronavírus Irará',
   targetLocation: 'Irará'
 };
 
