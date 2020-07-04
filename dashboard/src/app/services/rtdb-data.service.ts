@@ -40,9 +40,14 @@ export class RtdbDataService {
   deceasedSeries: [number];
   humanReadableDateSeries: [string];
 
-  constructor(db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase) {
 
-    this.spreadsheet = db.object(`${environment.spreadsheetId}`).valueChanges();
+    this.updateDataFromApi();
+
+  }
+
+  async updateDataFromApi() {
+    this.spreadsheet = this.db.object(`${environment.spreadsheetId}`).valueChanges();
 
     this.spreadsheet.subscribe((spreadsheetData) => {
 
@@ -109,7 +114,6 @@ export class RtdbDataService {
       this.humanReadableLastUpdate = formatRelative(date, now, {locale: ptBR});
 
     });
-
   }
 
 }
