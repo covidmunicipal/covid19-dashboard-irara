@@ -36,9 +36,6 @@ Para implantar uma nova versão no Firebase, certifique-se de que o último comm
 
 Primeiro, altere o atributo `version` no arquivo `package.json` com o novo número de versão e realize commit desta alteração normalmente.
 
-Depois, execute no terminal, substituindo o `X.X.X` pelo número de versão.
+Depois, realize um pull request para a branch `release`.
 
-    git tag -a vX.X.X -m "Implanta versão X.X.X"
-    git push --tags
-
-O deploy será feito automaticamente para o projeto `covid19-municipal` (covid.riso.dev) no Firebase.
+Quando o pull request for aceito, o deploy será feito automaticamente para o projeto `covid19-municipal` (covid.riso.dev) no Firebase.

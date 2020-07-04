@@ -3,15 +3,14 @@ name: deploy
 on:
   push:
     branches: [ release ]
-    tags:
-      - 'v*'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repo
+      uses: actions/checkout@v2
 
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
@@ -43,6 +42,14 @@ jobs:
       working-directory: ./dashboard
       env:
         CI: true
+
+    - name: Tag release
+      run: |
+        PACKAGE_VERSION=$(node -p "require('./package.json').version")
+        git tag -a v$PACKAGE_VERSION -m "Implanta versão $PACKAGE_VERSION"
+        git push --tags
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create release
       id: create_release

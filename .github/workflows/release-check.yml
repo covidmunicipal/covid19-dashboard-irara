@@ -1,0 +1,31 @@
+name: release-check
+
+on:
+  pull_request:
+    branches: [ release ]
+
+jobs:
+  release-check:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      
+      - name: Gather data
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          LAST_VERSION=$(git describe --abbrev=0)
+      
+      - name: Comment PR with release information
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "Oba! Parece que vamos lançar uma nova versão! 🚀 <br>Confira se os dados estão corretos.<br>**Nova versão (deste PR):** v${{ env.PACKAGE_VERSION }}<br>**Versão atual:** ${{ env.LAST_VERSION }}"
