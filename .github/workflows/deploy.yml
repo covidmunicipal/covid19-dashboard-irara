@@ -28,7 +28,7 @@ jobs:
       env:
         CI: true
 
-    - name: Create Release
+    - name: Create release
       id: create_release
       uses: actions/create-release@latest
       env:
