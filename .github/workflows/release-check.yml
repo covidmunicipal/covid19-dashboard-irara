@@ -20,11 +20,11 @@ jobs:
       
       - name: Gather data
         run: |
+          git fetch --tags
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           LAST_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
         working-directory: ./dashboard
 
-      
       - name: Comment PR with release information
         uses: unsplash/comment-on-pr@master
         env:
