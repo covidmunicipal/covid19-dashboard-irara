@@ -11,16 +11,31 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: |
+
+    - name: Install dependencies
+      run: |
         npm install -g @angular/cli
         npm install -g @ionic/cli
         npm install -g firebase-tools
         npm ci
+      working-directory: ./dashboard
+      env:
+        CI: true
+
+    - name: Build dashboard
+      run: |
         ionic build --prod
+      working-directory: ./dashboard
+      env:
+        CI: true
+
+    - name: Deploy dashboard to Firebase
+      run: |
         export GOOGLE_APPLICATION_CREDENTIALS="./secrets.json"
         echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
         firebase deploy -m ${{ github.ref }}
