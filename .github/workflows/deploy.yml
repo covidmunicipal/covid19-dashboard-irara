@@ -34,20 +34,21 @@ jobs:
       env:
         CI: true
 
+    - name: Tag release
+      run: |
+        PACKAGE_VERSION=$(node -p "require('./dashboard/package.json').version")
+        git tag -a v$PACKAGE_VERSION -m "Implanta versão $PACKAGE_VERSION"
+        git push --tags
+        echo '::set-env name=PACKAGE_VERSION::'$PACKAGE_VERSION
+
     - name: Deploy dashboard to Firebase
       run: |
         export GOOGLE_APPLICATION_CREDENTIALS="./secrets.json"
         echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
-        firebase deploy -m ${{ github.ref }}
+        firebase deploy -m v${{ env.PACKAGE_VERSION }}
       working-directory: ./dashboard
       env:
         CI: true
-
-    - name: Tag release
-      run: |
-        PACKAGE_VERSION=$(node -p "require('./package.json').version")
-        git tag -a v$PACKAGE_VERSION -m "Implanta versão $PACKAGE_VERSION"
-        git push --tags
 
     - name: Create release
       id: create_release
@@ -55,7 +56,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Covid19 Municipal ${{ github.ref }}
+        tag_name: v${{ env.PACKAGE_VERSION }}
+        release_name: Covid19 Municipal v${{ env.PACKAGE_VERSION }}
         draft: false
         prerelease: false
