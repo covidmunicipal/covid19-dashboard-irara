@@ -24,7 +24,7 @@ TO-DO
 
 ## Download de dados
 
-Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [seção Sobre da plataforma de acompanhamento](https://covid.riso.dev/about) e selecione a opção _Acessar banco de dados_. Os dados da Secretaria de Saúde da Bahia (SESAB) podem ser visualizados no [Brasil.IO](https://brasil.io/covid19/BA/).
+Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [seção Sobre da plataforma de acompanhamento](https://covid.riso.dev/about) e selecione a opção _Acesse o banco de dados_. Os dados da Secretaria de Saúde da Bahia (SESAB) podem ser visualizados no [Brasil.IO](https://brasil.io/covid19/BA/).
 
 ## Sobre
 
