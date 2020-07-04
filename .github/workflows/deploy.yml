@@ -48,8 +48,6 @@ jobs:
         PACKAGE_VERSION=$(node -p "require('./package.json').version")
         git tag -a v$PACKAGE_VERSION -m "Implanta versão $PACKAGE_VERSION"
         git push --tags
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create release
       id: create_release
