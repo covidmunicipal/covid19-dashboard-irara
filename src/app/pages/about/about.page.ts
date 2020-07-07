@@ -28,7 +28,7 @@ export class AboutPage implements OnInit {
     },
     {
       question: 'Quem são vocês?',
-      answer: 'Este projeto é mantido por Erick Almeida, bacharelando em Ciência da Computação na Universidade Federal de Pernambuco (UFPE) e Diego Silva, bacharelando em Engenharia da Computação na Universidade Estadual de Feira de Santana, além de contribuidores que podem ser visualizados na nossa página do GitHub.'
+      answer: 'Este projeto é mantido por Erick Almeida, bacharelando em Ciência da Computação na Universidade Federal de Pernambuco (UFPE) e Diego Silva, bacharelando em Engenharia da Computação na Universidade Estadual de Feira de Santana (UEFS), além de contribuidores que podem ser visualizados na nossa página do GitHub.'
     },
     {
       question: 'Por que vocês criaram este projeto já que não vão ganhar um centavo com ele?',
