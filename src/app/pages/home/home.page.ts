@@ -16,10 +16,18 @@ export class HomePage implements OnInit {
 
   targetLocation = environment.targetLocation;
 
+  themeColors: {
+    confirmed: string,
+    active: string,
+    recovered: string,
+    deceased: string
+  };
+
   constructor(public rtdbData: RtdbDataService, public brasilIoData: BrasilIoDataService) {}
 
   ngOnInit() {
     this.rtdbData.spreadsheet.subscribe(() => {
+      this.updateThemeColors();
       this.updateTooltips();
       this.updateGlanceCharts();
       this.updateEvolutionCharts();
@@ -28,6 +36,7 @@ export class HomePage implements OnInit {
 
   ionViewDidEnter() {
     if (this.rtdbData.lastTotalDayEntry) {
+      this.updateThemeColors();
       this.updateTooltips();
       this.updateGlanceCharts();
       this.updateEvolutionCharts();
@@ -109,6 +118,16 @@ export class HomePage implements OnInit {
 
   }
 
+  updateThemeColors() {
+    const styles = document.querySelector('style');
+    this.themeColors = {
+      confirmed: window.getComputedStyle(styles).getPropertyValue('--ion-color-danger'),
+      active: window.getComputedStyle(styles).getPropertyValue('--ion-color-primary'),
+      recovered: window.getComputedStyle(styles).getPropertyValue('--ion-color-success'),
+      deceased: window.getComputedStyle(styles).getPropertyValue('--ion-color-medium')
+    };
+  }
+
   updateGlanceCharts() {
 
     const axis = {
@@ -135,7 +154,7 @@ export class HomePage implements OnInit {
           type: 'line'
       },
       color: {
-        pattern: ['#f03064']
+        pattern: [this.themeColors.confirmed]
       },
       axis,
       legend,
@@ -151,7 +170,7 @@ export class HomePage implements OnInit {
           type: 'line'
       },
       color: {
-        pattern: ['#305ff0']
+        pattern: [this.themeColors.active]
       },
       axis,
       legend,
@@ -167,7 +186,7 @@ export class HomePage implements OnInit {
           type: 'line'
       },
       color: {
-        pattern: ['#29c065']
+        pattern: [this.themeColors.recovered]
       },
       axis,
       legend,
@@ -183,7 +202,7 @@ export class HomePage implements OnInit {
           type: 'line'
       },
       color: {
-        pattern: ['#7f8cb6']
+        pattern: [this.themeColors.deceased]
       },
       axis,
       legend,
@@ -209,7 +228,7 @@ export class HomePage implements OnInit {
           type: 'line'
       },
       color: {
-        pattern: ['#f03064', '#305ff0', '#29c065', '#7f8cb6']
+        pattern: [this.themeColors.confirmed, this.themeColors.active, this.themeColors.recovered, this.themeColors.deceased]
       },
       zoom: {
         enabled: true

@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule, ScreenTrackingService, UserTrackingService,
-  CONFIG, APP_VERSION, COLLECTION_ENABLED } from '@angular/fire/analytics';
+  CONFIG, APP_NAME, APP_VERSION, COLLECTION_ENABLED } from '@angular/fire/analytics';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
@@ -43,6 +43,7 @@ import { environment } from '../environments/environment';
     // caso queira testar o Google Analytics em debug mode, comente a linha acima,
     // descomente a linha abaixo e adicione DEBUG_MODE aos imports do AngularFireAuth.
     // { provide: DEBUG_MODE, useValue: !environment.production},
+    { provide: APP_NAME, useValue: environment.appName},
     { provide: APP_VERSION, useValue: environment.buildVersion}
   ],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { DashboardPipesModule } from '../../pipes/dashboard-pipes.module';
 import { AbsoluteNumberPipe } from '../../pipes/absolute-number.pipe';
 
 import { HomePage } from './home.page';
@@ -15,8 +16,10 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    DashboardPipesModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, AbsoluteNumberPipe]
+  declarations: [HomePage],
+  providers: [AbsoluteNumberPipe]
 })
 export class HomePageModule {}

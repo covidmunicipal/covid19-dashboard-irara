@@ -2,26 +2,33 @@ name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ develop, release ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-      
-    - run: |
+    
+    - name: Install dependencies
+      run: |
         npm install -g @angular/cli
         npm install -g @ionic/cli
         npm ci
+      env:
+        CI: true
+    
+    - name: Build dashboard
+      run: |
         ionic build --prod
-      working-directory: ./dashboard
       env:
         CI: true

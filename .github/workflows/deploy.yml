@@ -10,31 +10,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Generate bot token
+      id: generate_token
+      uses: tibdex/github-app-token@v1
+      with:
+        app_id: ${{ secrets.ALCOHOL_BOT_ID }}
+        private_key: ${{ secrets.ALCOHOL_BOT_PEM }}
+
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
     - name: Use Node.js 12.x
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-    - run: |
+
+    - name: Install dependencies
+      run: |
         npm install -g @angular/cli
         npm install -g @ionic/cli
         npm install -g firebase-tools
         npm ci
-        ionic build --prod
-        export GOOGLE_APPLICATION_CREDENTIALS="./secrets.json"
-        echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
-        firebase deploy -m ${{ github.ref }}
-      working-directory: ./dashboard
       env:
         CI: true
 
-    - name: Create Release
+    - name: Build dashboard
+      run: |
+        ionic build --prod
+      env:
+        CI: true
+
+    - name: Deploy dashboard to Firebase
+      run: |
+        export GOOGLE_APPLICATION_CREDENTIALS="./secrets.json"
+        echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
+        firebase deploy -m ${{ github.ref }}
+      env:
+        CI: true
+
+    - name: Create release
       id: create_release
       uses: actions/create-release@latest
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: Covid19 Municipal ${{ github.ref }}
+        release_name: COVID-19 Dashboard Irará v${{ github.ref }}
         draft: false
         prerelease: false

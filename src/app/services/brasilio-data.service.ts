@@ -17,7 +17,6 @@ export class BrasilIoDataService {
     try {
       const result: any = await this.http.get(`https://brasil.io/api/dataset/covid19/caso_full/data/?city=${environment.targetLocation}&is_last=true`).toPromise();
       this.lastEntryResult = result.results[0];
-      console.log(this.lastEntryResult);
     } catch (e) {}
   }
 
