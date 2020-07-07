@@ -1,10 +1,10 @@
 # ![COVID-19 Municipal](src/assets/logos/covid19-municipal.svg)
 
-![Build status](https://img.shields.io/github/workflow/status/covidmunicipal/covid-dashboard-irara/build)
-![Release version](https://img.shields.io/github/v/release/covidmunicipal/covid-dashboard-irara)
+![Build status](https://img.shields.io/github/workflow/status/covidmunicipal/covid19-dashboard-irara/build)
+![Release version](https://img.shields.io/github/v/release/covidmunicipal/covid19-dashboard-irara)
 ![Website status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fcovid.riso.dev)
 
-Plataforma para acompanhamento do novo Coronavírus (COVID-19) na cidade de Irará/BA
+Plataforma para acompanhamento do novo Coronavírus (COVID-19) na cidade de Irará/BA.
 
 _Este repositório agora contém apenas o dashboard. Se está em busca dos outros projetos que estavam disponíveis anteriormente aqui, visite a [página do COVID19 Municipal no GitHub](https://github.com/covidmunicipal)._
 
