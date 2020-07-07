@@ -6,12 +6,20 @@ on:
 
 jobs:
   tag-release:
-
     runs-on: ubuntu-latest
 
     steps:
+      - name: Generate bot token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.ALCOHOL_BOT_ID }}
+          private_key: ${{ secrets.ALCOHOL_BOT_PEM }}
+
       - name: Checkout repo
         uses: actions/checkout@v2
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
 
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
@@ -20,8 +28,8 @@ jobs:
 
       - name: Tag release
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "AlcoholBot[bot]"
+          git config --global user.email "67946942+alcoholbot[bot]@users.noreply.github.com"
           
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
           

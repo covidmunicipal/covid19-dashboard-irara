@@ -6,42 +6,48 @@ on:
 
 jobs:
   release-check:
-
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+    - name: Generate bot token
+      id: generate_token
+      uses: tibdex/github-app-token@v1
+      with:
+        app_id: ${{ secrets.ALCOHOL_BOT_ID }}
+        private_key: ${{ secrets.ALCOHOL_BOT_PEM }}
 
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      
-      - name: Gather data
-        run: |
-          git fetch --tags
-          NEW_PR_VERSION=v$(node -p "require('./package.json').version")
-          LAST_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
-          echo '::set-env name=NEW_PR_VERSION::'$NEW_PR_VERSION
-          echo '::set-env name=LAST_VERSION::'$LAST_VERSION
+    - name: Checkout repo
+      uses: actions/checkout@v2
 
-      - name: Comment PR with release information
-        uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          msg: "Oba! Parece que vamos lançar uma nova versão! 🚀 <br>Confira se os dados estão corretos.<br>**Nova versão (deste PR):** ${{ env.NEW_PR_VERSION }}<br>**Versão atual:** ${{ env.LAST_VERSION }}"
-        if: env.NEW_PR_VERSION != env.LAST_VERSION
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
 
-      - name: Comment PR if check failed
-        uses: unsplash/comment-on-pr@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          msg: "Beep, bop! Parece que você **esqueceu de atualizar o número da versão**. A versão atual e a deste PR são ambas ${{ env.NEW_PR_VERSION }}."
-        if: env.NEW_PR_VERSION == env.LAST_VERSION
+    - name: Gather data
+      run: |
+        git fetch --tags
+        NEW_PR_VERSION=v$(node -p "require('./package.json').version")
+        LAST_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
+        echo '::set-env name=NEW_PR_VERSION::'$NEW_PR_VERSION
+        echo '::set-env name=LAST_VERSION::'$LAST_VERSION
 
-      - name: Check release version
-        run: exit 1
-        if: env.NEW_PR_VERSION == env.LAST_VERSION
+    - name: Comment PR with release information
+      uses: unsplash/comment-on-pr@master
+      env:
+        GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+      with:
+        msg: "Oba! Parece que vamos lançar uma nova versão! 🚀 <br>Confira se os dados estão corretos.<br>**Nova versão (deste PR):** ${{ env.NEW_PR_VERSION }}<br>**Versão atual:** ${{ env.LAST_VERSION }}"
+      if: env.NEW_PR_VERSION != env.LAST_VERSION
+
+    - name: Comment PR if check failed
+      uses: unsplash/comment-on-pr@master
+      env:
+        GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+      with:
+        msg: "Beep, bop! Parece que você **esqueceu de atualizar o número da versão**. A versão atual e a deste PR são ambas ${{ env.NEW_PR_VERSION }}."
+      if: env.NEW_PR_VERSION == env.LAST_VERSION
+
+    - name: Check release version
+      run: exit 1
+      if: env.NEW_PR_VERSION == env.LAST_VERSION
