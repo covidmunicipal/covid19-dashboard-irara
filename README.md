@@ -6,7 +6,7 @@
 
 Plataforma para acompanhamento do novo Coronavírus (COVID-19) na cidade de Irará/BA.
 
-_Este repositório agora contém apenas o dashboard. Se está em busca dos outros projetos que estavam disponíveis anteriormente aqui, visite a [página do COVID19 Municipal no GitHub](https://github.com/covidmunicipal)._
+_Este repositório agora contém apenas o dashboard. Se está em busca dos outros projetos que estavam disponíveis anteriormente aqui, visite a [página do COVID-19 Municipal no GitHub](https://github.com/covidmunicipal)._
 
 Sinta-se livre para contribuir com o projeto e adaptá-lo para outros propósitos! ❤
 
