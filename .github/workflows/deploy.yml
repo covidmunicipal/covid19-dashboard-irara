@@ -55,6 +55,6 @@ jobs:
         GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: COVID-19 Dashboard Irará v${{ github.ref }}
+        release_name: COVID-19 Dashboard Irará ${{ github.ref }}
         draft: false
         prerelease: false
