@@ -1,0 +1,29 @@
+name: tag-release
+
+on:
+  push:
+    branches: [ release ]
+
+jobs:
+  tag-release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Tag release
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          
+          git tag -a v$PACKAGE_VERSION -m "Implanta versão $PACKAGE_VERSION"
+          git push --tags

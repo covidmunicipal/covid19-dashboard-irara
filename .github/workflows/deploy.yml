@@ -2,7 +2,8 @@ name: deploy
 
 on:
   push:
-    branches: [ release ]
+    tags:
+      - 'v*'
 
 jobs:
   deploy:
@@ -23,30 +24,20 @@ jobs:
         npm install -g @ionic/cli
         npm install -g firebase-tools
         npm ci
-      working-directory: ./dashboard
       env:
         CI: true
 
     - name: Build dashboard
       run: |
         ionic build --prod
-      working-directory: ./dashboard
       env:
         CI: true
-
-    - name: Tag release
-      run: |
-        PACKAGE_VERSION=$(node -p "require('./dashboard/package.json').version")
-        git tag -a v$PACKAGE_VERSION -m "Implanta versão $PACKAGE_VERSION"
-        git push --tags
-        echo '::set-env name=PACKAGE_VERSION::'$PACKAGE_VERSION
 
     - name: Deploy dashboard to Firebase
       run: |
         export GOOGLE_APPLICATION_CREDENTIALS="./secrets.json"
         echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
-        firebase deploy -m v${{ env.PACKAGE_VERSION }}
-      working-directory: ./dashboard
+        firebase deploy -m ${{ github.ref }}
       env:
         CI: true
 
@@ -56,7 +47,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ env.PACKAGE_VERSION }}
-        release_name: Covid19 Municipal v${{ env.PACKAGE_VERSION }}
+        tag_name: ${{ github.ref }}
+        release_name: Covid Dashboard Irará v${{ github.ref }}
         draft: false
         prerelease: false
