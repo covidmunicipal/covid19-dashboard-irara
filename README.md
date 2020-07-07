@@ -22,9 +22,10 @@ Clone o repositório para um diretório da sua preferência.
 
 O projeto requer o [Node.js](https://nodejs.org) v10 ou posterior.
 
-Instale o CLI do Ionic:
+Instale os CLIs do Ionic e do Angular:
 
     npm install -g @ionic/cli
+    npm install -g @angular/cli
 
 Instale as dependências do projeto:
 
