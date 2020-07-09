@@ -2,7 +2,7 @@
 
 ![Build status](https://img.shields.io/github/workflow/status/covidmunicipal/covid19-dashboard-irara/build)
 ![Release version](https://img.shields.io/github/v/release/covidmunicipal/covid19-dashboard-irara)
-![Website status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fcovid.riso.dev)
+![Website status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Firara.covidmunicipal.live)
 
 Plataforma para acompanhamento do novo Coronavírus (COVID-19) na cidade de Irará/BA.
 
@@ -14,7 +14,7 @@ Sinta-se livre para contribuir com o projeto e adaptá-lo para outros propósito
 
 ## Download de dados
 
-Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [planilha do Google Sheets](https://docs.google.com/spreadsheets/d/1-a543uhVSRItc7P4tZPiHBvz5bwUH0zQLn5b8hNbehg). Você também pode obter um arquivo `.json` na [seção Sobre da plataforma de acompanhamento](https://covid.riso.dev/about), selecionando a opção _Acesse o banco de dados_. Os dados da Secretaria de Saúde da Bahia (SESAB) podem ser visualizados no [Brasil.IO](https://brasil.io/covid19/BA/).
+Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [planilha do Google Sheets](https://docs.google.com/spreadsheets/d/1-a543uhVSRItc7P4tZPiHBvz5bwUH0zQLn5b8hNbehg). Você também pode obter um arquivo `.json` na [seção Sobre da plataforma de acompanhamento](https://irara.covidmunicipal.live/about), selecionando a opção _Acesse o banco de dados_. Os dados da Secretaria de Saúde da Bahia (SESAB) podem ser visualizados no [Brasil.IO](https://brasil.io/covid19/BA/).
 
 ## Configurando
 
@@ -51,7 +51,7 @@ Primeiro, altere o atributo `version` no arquivo `package.json` com o novo núme
 
 Depois, realize um pull request para a branch `release`.
 
-Quando o pull request for aceito, o deploy será feito automaticamente para o projeto `covid19-municipal` (covid.riso.dev) no Firebase.
+Quando o pull request for aceito, o deploy será feito automaticamente para o projeto `covid19-municipal` (irara.covidmunicipal.live) no Firebase.
 
 ## Sobre
 
