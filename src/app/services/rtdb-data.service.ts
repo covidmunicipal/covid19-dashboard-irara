@@ -84,7 +84,8 @@ export class RtdbDataService {
       const diffBetweenDates = differenceInCalendarDays(this.lastTotalDayEntry.data, lastWeekBulletin.data);
       this.averageGrowthRateBulletin = format(lastWeekBulletin.data, 'dd/MM/yyyy', {locale: ptBR});
       this.averageGrowthRate = ((((this.lastTotalDayEntry.casos_confirmados.total - lastWeekBulletin.casos_confirmados.total) /
-        lastWeekBulletin.casos_confirmados.total) * 100) / diffBetweenDates).toFixed(2);
+        lastWeekBulletin.casos_confirmados.total) * 100) / diffBetweenDates)
+        .toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
       // Calcula diferenças em relação ao dia anterior
       if (this.totalCasesArray.length > 1) {

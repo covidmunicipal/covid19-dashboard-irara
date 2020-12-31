@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
     tippy('#confirmed-tooltip', {
       content: `Dos <strong>${this.rtdbData.lastTotalDayEntry.casos_confirmados.total}</strong> casos,
                 <strong>${this.rtdbData.lastTotalDayEntry.casos_confirmados.lacen_ou_sorologia}</strong> foram confirmados
-                pelo LACEN ou sorologia, e <strong>${this.rtdbData.lastTotalDayEntry.testes_realizados.rapidos.positivos}</strong>
+                pelo teste RT-PCR ou teste sorológico, e <strong>${this.rtdbData.lastTotalDayEntry.testes_realizados.rapidos.positivos}</strong>
                 foram por meio de testes rápidos.`,
       allowHTML: true
     });
@@ -55,7 +55,7 @@ export class HomePage implements OnInit {
     tippy('#active-tooltip', {
       content: `Dos <strong>${this.rtdbData.lastTotalDayEntry.casos_ativos.total}</strong> casos ativos,
                 <strong>${this.rtdbData.lastTotalDayEntry.casos_ativos.lacen_ou_sorologia}</strong> foram confirmados
-                pelo LACEN ou sorologia, e <strong>${this.rtdbData.lastTotalDayEntry.casos_ativos.testes_rapidos}</strong>
+                pelo teste RT-PCR ou teste sorológico, e <strong>${this.rtdbData.lastTotalDayEntry.casos_ativos.testes_rapidos}</strong>
                 foram por meio de testes rápidos.`,
       allowHTML: true
     });
@@ -69,7 +69,7 @@ export class HomePage implements OnInit {
     });
 
     tippy('#deceased-tooltip', {
-      content: `Apenas são considerados óbitos pelo novo Coronavírus quando a pessoa tem resultado positivo atestado pelo LACEN ou teste sorológico.`,
+      content: `Apenas são considerados óbitos pelo novo Coronavírus quando a pessoa tem resultado positivo atestado pelo teste RT-PCR ou teste sorológico.`,
       allowHTML: true
     });
 
@@ -238,47 +238,11 @@ export class HomePage implements OnInit {
           type: 'timeseries',
           tick: {
               format: '%d/%m/%Y',
-              values: [
-                '26/03/2020',
-                '26/04/2020',
-                '26/05/2020',
-                '26/06/2020',
-                '26/07/2020',
-                '26/08/2020',
-                '26/09/2020',
-                '26/10/2020',
-                '26/11/2020',
-                '26/12/2020'
-              ]
+              count: 6
           }
         },
         y: {
-          min: 0,
-          tick: {
-            values: [
-              0,
-              10,
-              20,
-              30,
-              40,
-              50,
-              60,
-              70,
-              80,
-              90,
-              100,
-              110,
-              120,
-              130,
-              140,
-              150,
-              160,
-              170,
-              180,
-              190,
-              200
-            ],
-          }
+          min: 0
       }
     }
     });

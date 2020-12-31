@@ -28,7 +28,7 @@
 /* C3 library CSS */
 @import "~c3/c3.min.css";
 
-/* Microtip CSS library */
+/* Tippy CSS library */
 @import 'tippy.js/dist/tippy.css';
 
 /* Fonte */
@@ -160,6 +160,16 @@ h1, h2, h3, h4, h5, p {
 .evolution-chart {
     margin-left: -1em;
     margin-right: 1em;
+}
+
+/* Toast */
+
+ion-toast {
+    --button-color: #a2b5ec;
+}
+
+ion-toast::part(button) {
+    font-weight: 700;
 }
 
 /* C3 Charts */
