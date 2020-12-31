@@ -20,7 +20,7 @@ Se está em busca dos dados coletados sobre o Coronavírus em Irará, acesse a [
 
 Clone o repositório para um diretório da sua preferência.
 
-O projeto requer o [Node.js](https://nodejs.org) v10 ou posterior.
+O projeto requer o [Node.js](https://nodejs.org) v12 ou posterior.
 
 Instale os CLIs do Ionic e do Angular:
 
