@@ -178,6 +178,8 @@
             </ion-col>
             <ion-col size="9"><p class="ion-no-margin">Confirmados por teste rápido</p></ion-col>
           </ion-row>
+          
+          <!--
           <ion-row class="ion-align-items-center ion-margin-top">
             <ion-col size="3" *ngIf="brasilIoData.lastEntryResult"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ brasilIoData.lastEntryResult.last_available_confirmed }}</p></ion-col>
             <ion-col size="3" *ngIf="!brasilIoData.lastEntryResult">
@@ -186,6 +188,14 @@
             <ion-col size="9"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos notificados à SESAB </span><ion-icon *ngIf="brasilIoData.lastEntryResult" tabindex="0" class="tooltip-icon" id="notified-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p>
             </ion-col>
           </ion-row>
+          -->
+
+          <ion-row class="ion-align-items-center ion-margin-top">
+            <ion-col size="3"><p class="font-bold font-medium font-tabular-number ion-no-margin"><ion-icon alt="Temporariamente indisponível" name="cloud-offline"></ion-icon></p></ion-col>
+            <ion-col size="9"><p class="ion-no-margin"><span class="font-bold font-uppercase-title">Casos notificados à SESAB </span><ion-icon *ngIf="brasilIoData.lastEntryResult" tabindex="0" class="tooltip-icon" id="notified-tooltip" aria-label="Mais informações" color="medium" name="information-circle"></ion-icon></p>
+            </ion-col>
+          </ion-row>
+
           <ion-row class="ion-align-items-center ion-margin-top">
             <ion-col size="3" *ngIf="rtdbData.lastTotalDayEntry"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ rtdbData.lastTotalDayEntry.casos_monitorados }}</p></ion-col>
             <ion-col size="3" *ngIf="!rtdbData.lastTotalDayEntry">
