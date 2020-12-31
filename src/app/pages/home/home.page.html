@@ -216,7 +216,8 @@
           <ion-text color="primary"><h1 class="font-bold font-alternative">Ativos por localidade</h1></ion-text>
 
           <ng-container *ngIf="rtdbData.lastByLocationDayEntries">
-          <ion-row *ngFor="let locationEntry of rtdbData.lastByLocationDayEntries" class="ion-align-items-center">
+            <p *ngIf="rtdbData.lastByLocationDayEntries.length === 0">Não há nenhum caso ativo.</p>
+            <ion-row *ngFor="let locationEntry of rtdbData.lastByLocationDayEntries" class="ion-align-items-center">
             <ion-col size="3" class="no-left-padding"><p class="font-bold font-medium font-tabular-number ion-no-margin">{{ locationEntry.ativos.total }}</p></ion-col>
             <ion-col size="9"><p class="ion-no-margin"> {{ locationEntry.localidade }} </p></ion-col>
           </ion-row>
